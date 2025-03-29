@@ -1,5 +1,3 @@
-const { gray } = require("d3-color");
-
 const starWarsCharacters = [
   {
     name: "Luke Skywalker",
@@ -106,7 +104,7 @@ const starWarsCharacters = [
 /* ESERCIZIO 1
   Crea una variabile chiamata "charactersNames" e assegnale un array vuoto
 */
-const charactersNames = [];
+let charactersNames = [];
 /* ESERCIZIO 2
   Utilizzando un ciclo for, cicla l'array "starWarsCharacters".
   Dovrai accedere alla proprietà "name" di ogni oggetto in esso contenuto, e inserirla nell'array "charactersNames" creato precedentemente.
@@ -166,7 +164,7 @@ console.log(eyeColor);
   Usa un while loop per calcolare la massa totale dell'equipaggio. Salvala in una variabile chiamata "crewMass".
 */
 let i = 0;
-let crewMass;
+let crewMass = 0;
 while (i < starWarsCharacters.length) {
   const personaggio = starWarsCharacters[i];
   crewMass += personaggio.mass;
@@ -184,26 +182,46 @@ console.log(crewMass);
 
   Una volta fatto, modifica la massa di qualche elemento dell'equipaggio e vedi se riesci ad ottenere un messaggio diverso.
 */
-if (starWarsCharacters.crewMass < 500) {
+if (crewMass < 500) {
   console.log("Ship is under loaded");
-} else if (starWarsCharacters.crewMass > 500 && starWarsCharacters.crewMass < 700) {
+} else if (crewMass > 500 && crewMass < 700) {
   console.log("Ship is half loaded");
-} else if (starWarsCharacters.crewMass > 700 && starWarsCharacters.crewMass < 900) {
+} else if (crewMass > 700 && crewMass < 900) {
   console.log("Warning: Load is over 700");
-} else if (starWarsCharacters.crewMass > 900 && starWarsCharacters.crewMass < 1000) {
+} else if (crewMass > 900 && crewMass < 1000) {
   console.log("Critical Load: Over 900");
-} else if (starWarsCharacters.crewMass > 1000) {
+} else if (crewMass > 1000) {
   console.log("DANGER! OVERLOAD ALERT: escape from ship now!");
 }
 /* ESERCIZIO 8
   Usa un for loop per cambiare il valore della proprietà "gender" di alcuni personaggi dal valore "n/a" a "robot" (Tip: puoi effettuare la riassegnazione del valore corrispondente o creare un nuovo array)
 */
-
+for (let i = 0; i < starWarsCharacters.length; i++) {
+  const personaggio = starWarsCharacters[i];
+  if (personaggio.gender === "n/a") {
+    personaggio.gender = "robot";
+    console.log(personaggio);
+  }
+}
 /* --EXTRA-- ESERCIZIO 9
   Utilizzando gli elementi presenti nell'array "femaleCharacters" rimuovi dall'array "charactersNames" le stringhe corrispondenti a personaggi con lo stesso nome.
   Una volta fatto crea un console.log per controllare la proprietà length di "charactersNames" prima e dopo l'operazione.
 */
-
+console.log("extra 10", charactersNames);
+console.log("female", femaleCharacters);
+for (let i = 0; i < charactersNames.length; i++) {
+  const personaggio = charactersNames[i];
+  if (personaggio.name === femaleCharacters.name) {
+    charactersNames.splice(i, 1);
+  }
+}
+console.log("Risultato", charactersNames);
 /* --EXTRA-- ESERCIZIO 10
   Crea una funzionalità che selezioni un elemento casuale dall'array "starWarsCharacters" e ne stampi in console le proprietà in modo discorsivo (a tuo piacimento).
 */
+function casualePersonaggio() {
+  const random = Math.floor(Math.random() * starWarsCharacters.length + 1);
+  console.log(starWarsCharacters[random]);
+}
+console.log(" ");
+casualePersonaggio();
